@@ -1,0 +1,19 @@
+[package]
+name = "chronvault_timelock"
+version = "1.0.0"
+edition = "2021"
+description = "ChronVault: one-way SOL time lock. No owner, no admin, no upgrade (deployed --final)."
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+pinocchio = { version = "=0.9.2", default-features = false }
+
+[profile.release]
+overflow-checks = false
+lto = "fat"
+codegen-units = 1
+opt-level = 3
+panic = "abort"
